@@ -10,7 +10,10 @@ import java.util.List;
 
 /**
  * <h2>Vertex</h2>
- * <p>A renderable 3D triangle.</p>
+ * <p>
+ * A renderable 3D triangle.
+ * Calculations assume coordinates are counter-clockwise.
+ * </p>
  */
 public class Vertex implements Iterable<Vector> {
     /**
