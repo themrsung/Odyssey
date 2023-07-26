@@ -1,6 +1,7 @@
 package civitas.celestis.task.lifecycle;
 
 import civitas.celestis.event.lifecycle.EventTask;
+import civitas.celestis.state.StateTickTask;
 import civitas.celestis.task.Task;
 import civitas.celestis.util.Counter;
 
@@ -19,10 +20,14 @@ class SchedulerImpl implements Scheduler {
     private final SchedulerCore eventCore = new SchedulerCore(1);
 
     /**
+     * The scheduler core dedicated to ticking objects in the state.
+     */
+    private final SchedulerCore stateCore = new SchedulerCore(1);
+
+    /**
      * Asynchronous scheduler cores.
      */
     private final SchedulerCore[] asyncCores = {
-            new SchedulerCore(1),
             new SchedulerCore(1),
             new SchedulerCore(1),
             new SchedulerCore(1),
@@ -57,6 +62,8 @@ class SchedulerImpl implements Scheduler {
     public void registerTask(@Nonnull Task task) {
         if (task instanceof EventTask) {
             eventCore.addTask(task);
+        } else if (task instanceof StateTickTask) {
+            stateCore.addTask(task);
         } else {
             asyncCores[asyncCounter.get()].addTask(task);
         }
@@ -78,6 +85,8 @@ class SchedulerImpl implements Scheduler {
     public void unregisterTask(@Nonnull Task task) {
         if (task instanceof EventTask) {
             eventCore.removeTask(task);
+        } else if (task instanceof StateTickTask) {
+            stateCore.removeTask(task);
         } else {
             Arrays.stream(asyncCores).forEach(c -> c.removeTask(task));
         }

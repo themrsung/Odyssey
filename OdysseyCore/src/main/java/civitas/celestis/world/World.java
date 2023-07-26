@@ -1,10 +1,13 @@
 package civitas.celestis.world;
 
+import civitas.celestis.io.Deserializer;
+import civitas.celestis.io.Serializer;
 import civitas.celestis.object.OdysseyObject;
 import civitas.celestis.util.Identifiable;
 import org.joda.time.Duration;
 
 import javax.annotation.Nonnull;
+import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
 
@@ -12,13 +15,29 @@ import java.util.UUID;
  * <h2>World</h2>
  * <p>Represents an in-game world.</p>
  */
-public interface World extends Identifiable {
+public interface World extends Identifiable, Serializable {
     /**
      * Called every tick.
      *
      * @param delta Duration between the last tick and now
      */
     void tick(@Nonnull Duration delta);
+
+    //
+    // Identification
+    //
+
+    /**
+     * Gets the name of this world.
+     *
+     * @return Name
+     */
+    @Nonnull
+    String getName();
+
+    //
+    // Objects
+    //
 
     /**
      * Gets a list of objects in this world.
@@ -52,4 +71,24 @@ public interface World extends Identifiable {
      * @param object Object to remove
      */
     void removeObject(@Nonnull OdysseyObject object);
+
+    //
+    // IO
+    //
+
+    /**
+     * Gets a deserializer instance of {@code this}.
+     *
+     * @return Deserializer instance
+     */
+    @Nonnull
+    Deserializer<? extends World> deserializer();
+
+    /**
+     * Gets a serializer instance of {@code this}.
+     *
+     * @return Serializer instance
+     */
+    @Nonnull
+    Serializer<? extends World> serializer();
 }

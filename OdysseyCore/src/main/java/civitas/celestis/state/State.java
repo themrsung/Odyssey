@@ -4,6 +4,7 @@ import civitas.celestis.world.World;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
@@ -12,6 +13,26 @@ import java.util.UUID;
  * <p>Represents the state of a game.</p>
  */
 public interface State {
+    /**
+     * Gets a new empty state.
+     *
+     * @return New {@link State} instance
+     */
+    @Nonnull
+    static State getEmptyState() {
+        return new StateImpl();
+    }
+
+    /**
+     * Starts ticking objects.
+     */
+    void start();
+
+    /**
+     * Stops ticking objects.
+     */
+    void stop();
+
     /**
      * Gets a list of worlds in this state.
      *
@@ -53,4 +74,20 @@ public interface State {
      * @param world World to remove
      */
     void removeWorld(@Nonnull World world);
+
+    /**
+     * Saves this state to local files.
+     *
+     * @param path Path to save data to
+     * @throws IOException When an error occurs while saving.
+     */
+    void save(@Nonnull String path) throws IOException;
+
+    /**
+     * Loads data from local files.
+     *
+     * @param path Path to load data from
+     * @throws IOException When an error occurs while loading.
+     */
+    void load(@Nonnull String path) throws IOException;
 }
