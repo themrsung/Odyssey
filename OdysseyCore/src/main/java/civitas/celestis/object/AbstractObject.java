@@ -111,6 +111,11 @@ public abstract class AbstractObject implements OdysseyObject {
         return rotationRate;
     }
 
+    @Override
+    public double getVelocity() {
+        return acceleration.magnitude();
+    }
+
     @Nonnull
     @Override
     public Solid getSolid() {

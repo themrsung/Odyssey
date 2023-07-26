@@ -34,6 +34,11 @@ class EventManagerImpl implements EventManager {
     }
 
     @Override
+    public void callEvent(@Nonnull Event event) {
+        eventQueue.add(event);
+    }
+
+    @Override
     public void registerListener(@Nonnull Listener listener) {
         listeners.add(listener);
     }

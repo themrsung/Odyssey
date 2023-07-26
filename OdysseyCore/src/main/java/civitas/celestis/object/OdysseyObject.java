@@ -134,6 +134,18 @@ public interface OdysseyObject extends Identifiable, Serializable {
     void setRotationRate(@Nonnull Quaternion rate);
 
     //
+    // Physics Delegates
+    //
+
+    /**
+     * Gets the current velocity of this object.
+     *
+     * @return Velocity
+     */
+    @Nonnegative
+    double getVelocity();
+
+    //
     // Physics Utility Functions
     //
 

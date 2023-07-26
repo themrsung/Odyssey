@@ -1,5 +1,6 @@
 package civitas.celestis.event.lifecycle;
 
+import civitas.celestis.event.Event;
 import civitas.celestis.event.Listener;
 
 import javax.annotation.Nonnull;
@@ -29,6 +30,13 @@ public interface EventManager {
      * Stops processing events.
      */
     void stop();
+
+    /**
+     * Calls an event to be handled.
+     *
+     * @param event Event to call
+     */
+    void callEvent(@Nonnull Event event);
 
     /**
      * Registers a listener to this event manager.
