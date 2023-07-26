@@ -27,6 +27,20 @@ public class Quaternion implements Serializable {
     //
 
     /**
+     * Gets a rotation quaternion from an axis/angle representation.
+     *
+     * @param axis  Axis of rotation
+     * @param angle Angle of rotation
+     * @return Rotation quaternion of axis/angle
+     */
+    @Nonnull
+    public static Quaternion fromAxisAngle(@Nonnull Vector axis, double angle) {
+        if (angle == 0) return IDENTITY;
+
+        return new Quaternion(Math.cos(angle / 2), axis.multiply(Math.sin(angle / 2)));
+    }
+
+    /**
      * Creates a new quaternion.
      *
      * @param w W value of this quaternion

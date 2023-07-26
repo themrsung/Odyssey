@@ -1,8 +1,6 @@
 package civitas.celestis;
 
 import civitas.celestis.event.lifecycle.EventManager;
-import civitas.celestis.player.lifecycle.PlayerManager;
-import civitas.celestis.state.State;
 import civitas.celestis.task.lifecycle.Scheduler;
 
 import javax.annotation.Nonnull;
@@ -20,8 +18,8 @@ public final class OdysseyCore {
      * Starts the core modules of Odyssey.
      */
     public static void start() {
+        // Start modules
         eventManager.start();
-        state.start();
         scheduler.start();
     }
 
@@ -29,8 +27,8 @@ public final class OdysseyCore {
      * Stops the core modules of Odyssey.
      */
     public static void stop() {
+        // Stop modules
         eventManager.stop();
-        state.stop();
         scheduler.stop();
     }
 
@@ -58,31 +56,9 @@ public final class OdysseyCore {
         return scheduler;
     }
 
-    /**
-     * Gets the game state.
-     *
-     * @return {@link State}
-     */
-    @Nonnull
-    public static State getState() {
-        return state;
-    }
-
-    /**
-     * Gets the player manager instance.
-     *
-     * @return {@link PlayerManager}
-     */
-    @Nonnull
-    public static PlayerManager getPlayerManager() {
-        return playerManager;
-    }
-
     //
     // Modules
     //
     private static final EventManager eventManager = EventManager.getDefaultInstance();
     private static final Scheduler scheduler = Scheduler.getDefaultInstance();
-    private static final State state = State.getEmptyState();
-    private static final PlayerManager playerManager = PlayerManager.getDefaultInstance();
 }
