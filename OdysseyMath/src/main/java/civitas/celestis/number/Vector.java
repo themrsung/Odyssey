@@ -266,7 +266,7 @@ public class Vector implements Serializable {
     }
 
     /**
-     * Gets the squared distance from {{@code this}} to {@code v}.
+     * Gets the squared distance from {@code this} to {@code v}.
      *
      * @param v Vector to get distance to
      * @return Squared distance between two vectors
