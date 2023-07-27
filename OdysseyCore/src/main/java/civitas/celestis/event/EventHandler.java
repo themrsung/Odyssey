@@ -25,14 +25,8 @@ public @interface EventHandler {
      * The priority of an event handler.
      */
     enum Priority {
-        PRE_EARLY,
         EARLY,
-        POST_EARLY,
-        PRE_NORMAL,
         NORMAL,
-        POST_NORMAL,
-        PRE_LATE,
-        LATE,
-        POST_LATE;
+        LATE;
     }
 }

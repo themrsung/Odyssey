@@ -15,7 +15,7 @@ import javax.annotation.Nonnull;
  * <p>Handles processing collisions.</p>
  */
 public final class ObjectsCollidedListener implements Listener {
-    @EventHandler(priority = EventHandler.Priority.POST_LATE)
+    @EventHandler(priority = EventHandler.Priority.LATE)
     public void onObjectsCollided(@Nonnull ObjectsCollidedEvent event) {
         if (event.isCancelled()) return; // Respect cancellation
 
