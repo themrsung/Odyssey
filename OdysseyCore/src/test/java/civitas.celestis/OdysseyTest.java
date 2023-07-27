@@ -1,6 +1,7 @@
 package civitas.celestis;
 
 import civitas.celestis.geometry.profile.SphericalGeometry;
+import civitas.celestis.number.Numbers;
 import civitas.celestis.number.Quaternion;
 import civitas.celestis.number.Vector;
 import civitas.celestis.object.BaseObject;
@@ -59,5 +60,9 @@ public final class OdysseyTest {
                 return new Duration(1000);
             }
         });
+
+        final Vector v = new Vector(1002, 2930, 203).normalize();
+        System.out.println(v + " " + v.magnitude());
+        System.out.println(Numbers.isqrt(4));
     }
 }

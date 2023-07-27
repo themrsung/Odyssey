@@ -112,6 +112,7 @@ public class Vector implements Serializable {
 
     /**
      * Gets the magnitude of this vector.
+     * This operation includes {@link Math#sqrt(double)}.
      *
      * @return Magnitude
      */
@@ -251,11 +252,7 @@ public class Vector implements Serializable {
      */
     @Nonnull
     public Vector normalize() {
-        try {
-            return divide(magnitude());
-        } catch (ArithmeticException e) {
-            return ZERO;
-        }
+        return multiply(Numbers.isqrt(magnitude2()));
     }
 
     /**
