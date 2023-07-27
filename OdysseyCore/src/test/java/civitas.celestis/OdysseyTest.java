@@ -24,21 +24,33 @@ public final class OdysseyTest {
         final World world = new DebugWorld(UUID.randomUUID(), "World", new ArrayList<>(), new ArrayList<>(), new Vector(0, -9.807, 0), 1.293);
         final BaseObject object = new DebugObject(
                 UUID.randomUUID(),
-                new Vector(0, 555, 0),
+                new Vector(0, 555, 100),
                 Quaternion.IDENTITY,
-                50000,
-                new SphericalGeometry(0.1),
-                Vector.ZERO,
+                100,
+                new SphericalGeometry(0.5),
+                new Vector(0, 0, -50),
+                Quaternion.IDENTITY
+        );
+
+        final BaseObject o2 = new DebugObject(
+                UUID.randomUUID(),
+                new Vector(0, 555, -100),
+                Quaternion.IDENTITY,
+                100,
+                new SphericalGeometry(0.5),
+                new Vector(0, 0, 50),
                 Quaternion.IDENTITY
         );
 
         world.addObject(object);
+        world.addObject(o2);
         Odyssey.getWorldManager().addWorld(world);
 
         Odyssey.getScheduler().registerTask(new Task() {
             @Override
             public void execute(@Nonnull Duration delta) {
                 System.out.println(object.getLocation());
+                System.out.println(o2.getLocation());
             }
 
             @Nonnull

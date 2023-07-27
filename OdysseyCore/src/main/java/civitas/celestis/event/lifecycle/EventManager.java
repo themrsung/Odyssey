@@ -94,6 +94,7 @@ public final class EventManager {
 
     private final Queue<Event> eventQueue = new LinkedList<>();
     private final List<Listener> listeners = new ArrayList<>();
+    @SuppressWarnings("BusyWait")
     private final Thread thread = new Thread(() -> {
         while (true) {
             final Event event = eventQueue.poll();
@@ -118,6 +119,12 @@ public final class EventManager {
                         e.printStackTrace();
                     }
                 });
+            }
+
+            try {
+                Thread.sleep(0);
+            } catch (InterruptedException e) {
+                return;
             }
         }
     });
