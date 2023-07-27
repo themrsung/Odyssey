@@ -18,6 +18,7 @@ public abstract class ObjectEvent {
 
     /**
      * Gets the object involved in this event.
+     *
      * @return Object
      */
     @Nonnull

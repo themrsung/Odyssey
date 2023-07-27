@@ -81,24 +81,28 @@ public interface OdysseyObject extends Identifiable {
 
     /**
      * Moves this object by given amount.
+     *
      * @param amount Amount to move
      */
     void move(@Nonnull Vector amount);
 
     /**
      * Accelerates this object by given acceleration.
+     *
      * @param acceleration Acceleration to apply
      */
-    void acceleration(@Nonnull Vector acceleration);
+    void accelerate(@Nonnull Vector acceleration);
 
     /**
      * Rotates this object by given rotation.
+     *
      * @param rotation Rotation to apply
      */
     void rotate(@Nonnull Quaternion rotation);
 
     /**
      * Adds rotation rate to this object.
+     *
      * @param rate Rate of rotation to add
      */
     void rotateRate(@Nonnull Quaternion rate);

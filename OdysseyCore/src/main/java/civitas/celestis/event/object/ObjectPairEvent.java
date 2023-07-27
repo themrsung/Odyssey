@@ -20,6 +20,7 @@ public abstract class ObjectPairEvent implements Event {
 
     /**
      * Gets the pair of objects involved in this event.
+     *
      * @return Object pair
      */
     @Nonnull
