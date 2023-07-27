@@ -119,6 +119,15 @@ public class Vector implements Serializable {
         return Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2) + Math.pow(z, 2));
     }
 
+    /**
+     * Gets the squared magnitude of this vector.
+     *
+     * @return Squared magnitude
+     */
+    public double magnitude2() {
+        return Math.pow(x, 2) + Math.pow(y, 2) + Math.pow(z, 2);
+    }
+
     //
     // Vector-Scalar Arithmetic
     //
@@ -258,6 +267,17 @@ public class Vector implements Serializable {
     @Nonnegative
     public double distance(@Nonnull Vector v) {
         return subtract(v).magnitude();
+    }
+
+    /**
+     * Gets the squared distance from {{@code this}} to {@code v}.
+     *
+     * @param v Vector to get distance to
+     * @return Squared distance between two vectors
+     */
+    @Nonnegative
+    public double distance2(@Nonnull Vector v) {
+        return subtract(v).magnitude2();
     }
 
     /**

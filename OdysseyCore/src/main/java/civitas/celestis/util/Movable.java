@@ -1,16 +1,15 @@
-package civitas.celestis.object;
+package civitas.celestis.util;
 
 import civitas.celestis.number.Quaternion;
 import civitas.celestis.number.Vector;
-import civitas.celestis.util.Identifiable;
 
 import javax.annotation.Nonnull;
 
 /**
- * <h2>OdysseyObject</h2>
- * <p>An object used in Odyssey.</p>
+ * <h2>Movable</h2>
+ * <p>A movable object can be moved by Odyssey.</p>
  */
-public interface OdysseyObject extends Identifiable {
+public interface Movable {
     //
     // Location & Rotation
     //
