@@ -13,6 +13,7 @@ import javax.annotation.Nonnull;
 public final class ObjectsCollidedEvent implements Cancellable {
     /**
      * Creates a new objects collided event.
+     *
      * @param objects Pair of objects which have collided
      */
     public ObjectsCollidedEvent(@Nonnull Pair<PhysicalObject> objects) {
@@ -25,6 +26,7 @@ public final class ObjectsCollidedEvent implements Cancellable {
 
     /**
      * Gets the pair of objects which collided.
+     *
      * @return Pair of collided objects
      */
     @Nonnull

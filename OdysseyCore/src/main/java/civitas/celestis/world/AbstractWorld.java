@@ -21,8 +21,8 @@ public abstract class AbstractWorld implements World {
      * Creates a new abstract world.
      *
      * @param uniqueId Unique identifier of this world
-     * @param name Name of this world
-     * @param objects List of objects in this world
+     * @param name     Name of this world
+     * @param objects  List of objects in this world
      * @param overlaps List of overlapping objects in this world
      */
     public AbstractWorld(

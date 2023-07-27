@@ -14,6 +14,7 @@ import java.util.UUID;
 public abstract class AbstractBaseObject implements BaseObject {
     /**
      * Creates a new abstract base object.
+     *
      * @param uniqueId Unique identifier of this object
      * @param location Location of this object
      * @param rotation Rotation of this object

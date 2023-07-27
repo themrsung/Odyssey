@@ -12,6 +12,7 @@ import javax.annotation.Nonnull;
 public interface RealisticWorld extends World {
     /**
      * Gets the gravity of this world.
+     *
      * @return Gravity
      */
     @Nonnull
@@ -19,6 +20,7 @@ public interface RealisticWorld extends World {
 
     /**
      * Gets the gravitational acceleration of this world.
+     *
      * @return Gravitational acceleration
      */
     @Nonnegative
@@ -26,6 +28,7 @@ public interface RealisticWorld extends World {
 
     /**
      * Gets the air density of this world.
+     *
      * @return Air density
      */
     @Nonnegative
@@ -33,12 +36,14 @@ public interface RealisticWorld extends World {
 
     /**
      * Sets the gravity of this world.
+     *
      * @param gravity Gravity
      */
     void setGravity(@Nonnull Vector gravity);
 
     /**
      * Sets the air density of this world.
+     *
      * @param density Air density
      */
     void setAirDensity(@Nonnegative double density);

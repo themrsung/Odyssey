@@ -4,8 +4,6 @@ import civitas.celestis.number.Vector;
 import civitas.celestis.object.BaseObject;
 import civitas.celestis.object.PhysicalObject;
 import civitas.celestis.util.Pair;
-import civitas.celestis.world.AbstractWorld;
-import civitas.celestis.world.RealisticWorld;
 import org.joda.time.Duration;
 
 import javax.annotation.Nonnegative;
@@ -22,11 +20,11 @@ public abstract class AbstractRealisticWorld extends AbstractWorld implements Re
     /**
      * Creates a new abstract realistic world.
      *
-     * @param uniqueId Unique identifier of this world
-     * @param name Name of this world
-     * @param objects List of objects in this world
-     * @param overlaps List of overlapping object pairs
-     * @param gravity Gravity vector of this world
+     * @param uniqueId   Unique identifier of this world
+     * @param name       Name of this world
+     * @param objects    List of objects in this world
+     * @param overlaps   List of overlapping object pairs
+     * @param gravity    Gravity vector of this world
      * @param airDensity Air density of this world
      */
     public AbstractRealisticWorld(

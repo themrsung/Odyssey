@@ -101,6 +101,7 @@ public interface PhysicalObject extends BaseObject {
 
     /**
      * Gets the velocity of this object.
+     *
      * @return Velocity
      */
     @Nonnegative
@@ -108,6 +109,7 @@ public interface PhysicalObject extends BaseObject {
 
     /**
      * Gets the squared velocity of this object.
+     *
      * @return Squared velocity
      */
     @Nonnegative

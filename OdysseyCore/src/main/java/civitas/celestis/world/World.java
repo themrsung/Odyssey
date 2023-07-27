@@ -50,6 +50,7 @@ public interface World {
 
     /**
      * Gets a list of overlapping object pairs.
+     *
      * @return List of overlapping pairs
      */
     @Nonnull
