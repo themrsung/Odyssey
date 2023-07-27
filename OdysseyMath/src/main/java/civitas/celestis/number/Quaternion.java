@@ -133,6 +133,15 @@ public class Quaternion implements Serializable {
         return Math.sqrt(Math.pow(w, 2) + Math.pow(x, 2) + Math.pow(y, 2) + Math.pow(z, 2));
     }
 
+    /**
+     * Gets the squared magnitude of this quaternion.
+     * @return Squared magnitude
+     */
+    @Nonnegative
+    public double magnitude2() {
+        return Math.pow(w, 2) + Math.pow(x, 2) + Math.pow(y, 2) + Math.pow(z, 2)
+    }
+
     //
     // Quaternion-Scalar Arithmetic
     //
@@ -256,6 +265,15 @@ public class Quaternion implements Serializable {
     }
 
     /**
+     * Normalizes this quaternion to a unit quaternion.
+     * @return Normalized unit quaternion
+     */
+    @Nonnull
+    public Quaternion normalize() {
+        return multiply(Numbers.isqrt(magnitude2()));
+    }
+
+    /**
      * Gets the conjugate of this quaternion.
      *
      * @return Conjugate
@@ -274,7 +292,7 @@ public class Quaternion implements Serializable {
     @Nonnull
     public Quaternion inverse() {
         try {
-            return conjugate().divide(magnitude());
+            return conjugate().multiply(Numbers.isqrt(magnitude2()));
         } catch (ArithmeticException e) {
             return ZERO;
         }

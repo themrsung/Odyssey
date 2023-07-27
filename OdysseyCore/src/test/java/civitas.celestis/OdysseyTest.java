@@ -63,6 +63,6 @@ public final class OdysseyTest {
 
         final Vector v = new Vector(1002, 2930, 203).normalize();
         System.out.println(v + " " + v.magnitude());
-        System.out.println(Numbers.isqrt(4));
+        System.out.println(Vector.ZERO.normalize());
     }
 }
