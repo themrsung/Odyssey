@@ -16,6 +16,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Viewport extends JPanel {
+    //
+    //
+    //
+    // THIS IS A TEMPORARY BODGED SOLUTION
+    // USE ONLY FOR TESTING
+    //
+    //
+    //
     public Viewport(World world, Vector location, Quaternion rotation) {
         super(true);
         this.world = world;

@@ -1,5 +1,6 @@
 package civitas.celestis.geometry;
 
+import civitas.celestis.graphics.Colors;
 import civitas.celestis.number.Quaternion;
 import civitas.celestis.number.Vector;
 
@@ -67,5 +68,10 @@ public final class ColoredVertex extends Vertex {
     @Override
     public ColoredVertex inflate(double scale) {
         return new ColoredVertex(super.inflate(scale), color);
+    }
+
+    @Override
+    public void onLightRayHit(@Nonnull LightRay ray) {
+        color = Colors.brighten(color, ray.intensity());
     }
 }

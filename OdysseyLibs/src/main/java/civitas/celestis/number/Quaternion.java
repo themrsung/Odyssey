@@ -135,6 +135,7 @@ public class Quaternion implements Serializable {
 
     /**
      * Gets the squared magnitude of this quaternion.
+     *
      * @return Squared magnitude
      */
     @Nonnegative
@@ -266,6 +267,7 @@ public class Quaternion implements Serializable {
 
     /**
      * Normalizes this quaternion to a unit quaternion.
+     *
      * @return Normalized unit quaternion
      */
     @Nonnull

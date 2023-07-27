@@ -19,7 +19,17 @@ public class Ray {
      */
     public Ray(@Nonnull Vector origin, @Nonnull Vector direction) {
         this.origin = origin;
-        this.direction = direction;
+        this.direction = direction.normalize();
+    }
+
+    /**
+     * Copy constructor.
+     *
+     * @param other Ray to copy
+     */
+    public Ray(@Nonnull Ray other) {
+        this.origin = other.origin;
+        this.direction = other.direction;
     }
 
     @Nonnull
@@ -56,5 +66,19 @@ public class Ray {
     @Nonnull
     public Vector destination(double length) {
         return origin.add(direction.multiply(length));
+    }
+
+    /**
+     * Converts this ray to a string.
+     *
+     * @return Stringified ray
+     */
+    @Override
+    @Nonnull
+    public String toString() {
+        return "Ray{" +
+                "origin=" + origin +
+                ", direction=" + direction +
+                '}';
     }
 }

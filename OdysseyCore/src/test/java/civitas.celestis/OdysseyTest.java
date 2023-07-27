@@ -1,6 +1,7 @@
 package civitas.celestis;
 
 import civitas.celestis.geometry.profile.SphericalGeometry;
+import civitas.celestis.graphics.Viewport;
 import civitas.celestis.number.Quaternion;
 import civitas.celestis.number.Vector;
 import civitas.celestis.object.BaseObject;
@@ -12,8 +13,6 @@ import org.joda.time.Duration;
 
 import javax.annotation.Nonnull;
 import javax.swing.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
@@ -77,8 +76,16 @@ public final class OdysseyTest {
         });
 
         final JFrame frame = new JFrame("Test");
-        final Viewport viewport = new Viewport(world, new Vector(0, 555, -50), Quaternion.fromAxisAngle(Vector.POSITIVE_Y, Math.toRadians(1)));
+        final Viewport viewport = new Viewport();
+
+        viewport.setWorld(world);
+        viewport.setOrigin(new Vector(0, 555, -100));
+        viewport.setRotation(Quaternion.IDENTITY);
+
         frame.add(viewport);
+
+        frame.setSize(1920, 1080);
+        frame.setVisible(true);
         frame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -87,30 +94,6 @@ public final class OdysseyTest {
             }
         });
 
-        frame.setSize(1920, 1080);
-        frame.setVisible(true);
-        viewport.setSize(frame.getSize());
-
-        Odyssey.getScheduler().registerTask(delta -> frame.repaint());
-
-        frame.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyPressed(KeyEvent e) {
-                switch (e.getKeyCode()) {
-                    case KeyEvent.VK_UP -> {
-                        viewport.setRotation(Quaternion.fromAxisAngle(Vector.POSITIVE_X, Math.toRadians(-1)).multiply(viewport.getRotation()));
-                    }
-                    case KeyEvent.VK_DOWN -> {
-                        viewport.setRotation(Quaternion.fromAxisAngle(Vector.POSITIVE_X, Math.toRadians(1)).multiply(viewport.getRotation()));
-                    }
-                    case KeyEvent.VK_RIGHT -> {
-                        viewport.setRotation(Quaternion.fromAxisAngle(Vector.POSITIVE_Y, Math.toRadians(1)).multiply(viewport.getRotation()));
-                    }
-                    case KeyEvent.VK_LEFT -> {
-                        viewport.setRotation(Quaternion.fromAxisAngle(Vector.POSITIVE_Y, Math.toRadians(-1)).multiply(viewport.getRotation()));
-                    }
-                }
-            }
-        });
+        Odyssey.getScheduler().registerTask(delta -> viewport.render());
     }
 }

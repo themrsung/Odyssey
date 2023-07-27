@@ -127,7 +127,7 @@ public final class EventManager {
                 return;
             }
         }
-    });
+    }, "EventProcessThread");
 
     /**
      * A transient data class for storing handler methods.

@@ -42,7 +42,7 @@ public final class SchedulerCore {
                     return;
                 }
             }
-        });
+        }, "SchedulerCore");
     }
 
     /**

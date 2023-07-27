@@ -109,5 +109,5 @@ public final class WorldManager {
                 return;
             }
         }
-    });
+    }, "WorldTickThread");
 }

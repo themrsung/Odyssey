@@ -87,6 +87,16 @@ public class Vertex implements Iterable<Vector> {
     }
 
     /**
+     * Gets a list of points of this vertex.
+     *
+     * @return List of points
+     */
+    @Nonnull
+    public List<Vector> points() {
+        return List.of(a, b, c);
+    }
+
+    /**
      * Gets the surface normal of this vertex.
      *
      * @return Surface normal
@@ -116,8 +126,50 @@ public class Vertex implements Iterable<Vector> {
     }
 
     /**
+     * Gets the reflecting vector of given input vector.
+     * Return value is not normalized.
+     *
+     * @param in Input vector
+     * @return Reflection of input vector
+     */
+    @Nonnull
+    public Vector reflection(@Nonnull Vector in) {
+        return in.subtract(normal().multiply(2 * in.dot(normal())));
+    }
+
+    /**
+     * Gets the reflecting ray of given ray.
+     *
+     * @param in Input ray
+     * @return Reflection ray if this vertex intersects with given ray, {@code null} if not
+     */
+    @Nullable
+    public Ray reflection(@Nonnull Ray in) {
+        final Vector intersection = intersection(in);
+        if (intersection == null) return null;
+
+        final Vector reflection = reflection(in.direction());
+        return new Ray(intersection, reflection);
+    }
+
+    /**
+     * Gets the reflection ray of given light ray.
+     *
+     * @param in Input light ray
+     * @return Reflection ray if this vertex intersects with given ray, {@code null} if not
+     */
+    @Nullable
+    public LightRay reflection(@Nonnull LightRay in) {
+        final Ray r = reflection((Ray) in);
+        if (r == null) return null;
+
+        return new LightRay(r, in.intensity());
+    }
+
+    /**
      * Transforms this vertex to relative space.
-     * @param origin Relative origin
+     *
+     * @param origin   Relative origin
      * @param rotation Relative rotation
      * @return Relative vertex
      */
@@ -132,6 +184,7 @@ public class Vertex implements Iterable<Vector> {
 
     /**
      * Inflates this vertex by given scale.
+     *
      * @param scale Scale to use
      * @return Inflated vertex
      */
@@ -145,7 +198,15 @@ public class Vertex implements Iterable<Vector> {
     }
 
     /**
+     * Called when this vertex is hit by a light ray.
+     *
+     * @param ray Ray this vertex was hit by
+     */
+    public void onLightRayHit(@Nonnull LightRay ray) {}
+
+    /**
      * Gets the iterator of the three points of this vertex.
+     *
      * @return Iterator of points
      */
     @Override
