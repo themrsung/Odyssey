@@ -1,7 +1,18 @@
 package civitas.celestis;
 
-import civitas.celestis.event.DummyEvent;
-import civitas.celestis.listener.DummyListener;
+import civitas.celestis.geometry.profile.SphericalGeometry;
+import civitas.celestis.number.Quaternion;
+import civitas.celestis.number.Vector;
+import civitas.celestis.object.BaseObject;
+import civitas.celestis.object.DebugObject;
+import civitas.celestis.task.Task;
+import civitas.celestis.world.DebugWorld;
+import civitas.celestis.world.World;
+import org.joda.time.Duration;
+
+import javax.annotation.Nonnull;
+import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  * Test class for OdysseyCore.
@@ -9,7 +20,32 @@ import civitas.celestis.listener.DummyListener;
 public final class OdysseyTest {
     public static void main(String[] args) {
         Odyssey.start();
-        Odyssey.getEventManager().registerListener(new DummyListener());
-        Odyssey.getEventManager().call(new DummyEvent());
+
+        final World world = new DebugWorld(UUID.randomUUID(), "World", new ArrayList<>(), new ArrayList<>(), new Vector(0, -9.807, 0), 1.293);
+        final BaseObject object = new DebugObject(
+                UUID.randomUUID(),
+                new Vector(0, 555, 0),
+                Quaternion.IDENTITY,
+                50000,
+                new SphericalGeometry(0.1),
+                Vector.ZERO,
+                Quaternion.IDENTITY
+        );
+
+        world.addObject(object);
+        Odyssey.getWorldManager().addWorld(world);
+
+        Odyssey.getScheduler().registerTask(new Task() {
+            @Override
+            public void execute(@Nonnull Duration delta) {
+                System.out.println(object.getLocation());
+            }
+
+            @Nonnull
+            @Override
+            public Duration getInterval() {
+                return new Duration(1000);
+            }
+        });
     }
 }

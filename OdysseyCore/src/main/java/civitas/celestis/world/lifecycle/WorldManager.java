@@ -99,6 +99,7 @@ public final class WorldManager {
                 final Duration delta = new Duration(previous, now);
 
                 w.tick(delta);
+                tickTimes.put(w, now);
             });
         }
     });

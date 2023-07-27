@@ -1,6 +1,8 @@
 package civitas.celestis.world;
 
 import civitas.celestis.object.BaseObject;
+import civitas.celestis.object.PhysicalObject;
+import civitas.celestis.util.Pair;
 import org.joda.time.Duration;
 
 import javax.annotation.Nonnull;
@@ -45,6 +47,13 @@ public interface World {
      */
     @Nonnull
     BaseObject getObject(@Nonnull UUID uniqueId) throws NullPointerException;
+
+    /**
+     * Gets a list of overlapping object pairs.
+     * @return List of overlapping pairs
+     */
+    @Nonnull
+    List<Pair<PhysicalObject>> getOverlaps();
 
     /**
      * Adds an object to this world.
