@@ -246,7 +246,6 @@ public class Vector implements Serializable {
 
     /**
      * Normalizes this vector to a unit vector.
-     * If a unit vector cannot be derived, this will return {@link Vector#ZERO}.
      *
      * @return Normalized unit vector
      */
