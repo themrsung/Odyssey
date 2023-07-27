@@ -7,6 +7,7 @@ import civitas.celestis.number.Vector;
 import civitas.celestis.object.BaseObject;
 import civitas.celestis.object.DebugObject;
 import civitas.celestis.task.Task;
+import civitas.celestis.util.RotationBuilder;
 import civitas.celestis.world.DebugWorld;
 import civitas.celestis.world.World;
 import org.joda.time.Duration;
@@ -33,7 +34,7 @@ public final class OdysseyTest {
                 100000000,
                 new SphericalGeometry(10),
                 new Vector(-50, 0, 0),
-                Quaternion.fromAxisAngle(Vector.NEGATIVE_Z, Math.toRadians(181))
+                RotationBuilder.fromAxisAngle(Vector.NEGATIVE_Z, Math.toRadians(181)).build()
         );
 
         final BaseObject o2 = new DebugObject(
@@ -43,7 +44,7 @@ public final class OdysseyTest {
                 10000000000d,
                 new SphericalGeometry(2.5),
                 new Vector(1000, 0, 0),
-                Quaternion.fromAxisAngle(Vector.POSITIVE_Y, Math.toRadians(23))
+                RotationBuilder.fromAxisAngle(Vector.POSITIVE_Y, Math.toRadians(23)).build()
         );
 
         final BaseObject o3 = new DebugObject(
@@ -53,7 +54,7 @@ public final class OdysseyTest {
                 100,
                 new SphericalGeometry(49),
                 new Vector(0, 1000, 0),
-                Quaternion.fromAxisAngle(new Vector(2, -3, 29), Math.toRadians(500))
+                RotationBuilder.fromAxisAngle(new Vector(2, -3, 29), Math.toRadians(500)).build()
         );
 
         world.addObject(object);
