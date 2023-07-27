@@ -1,4 +1,4 @@
-package civitas.celestis.geometry;
+package civitas.celestis.graphics;
 
 import civitas.celestis.number.Vector;
 
