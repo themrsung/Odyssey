@@ -15,7 +15,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Viewport extends JPanel {
+public class TestViewport extends JPanel {
     //
     //
     //
@@ -24,7 +24,7 @@ public class Viewport extends JPanel {
     //
     //
     //
-    public Viewport(World world, Vector location, Quaternion rotation) {
+    public TestViewport(World world, Vector location, Quaternion rotation) {
         super(true);
         this.world = world;
         this.location = location;
