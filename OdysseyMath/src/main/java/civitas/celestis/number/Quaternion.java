@@ -37,7 +37,7 @@ public class Quaternion implements Serializable {
     public static Quaternion fromAxisAngle(@Nonnull Vector axis, double angle) {
         if (angle == 0) return IDENTITY;
 
-        return new Quaternion(Math.cos(angle / 2), axis.multiply(Math.sin(angle / 2)));
+        return new Quaternion(Math.cos(angle / 2), axis.normalize().multiply(Math.sin(angle / 2)));
     }
 
     /**

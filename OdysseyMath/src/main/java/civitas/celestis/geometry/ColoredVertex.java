@@ -1,5 +1,6 @@
 package civitas.celestis.geometry;
 
+import civitas.celestis.number.Quaternion;
 import civitas.celestis.number.Vector;
 
 import javax.annotation.Nonnull;
@@ -54,5 +55,17 @@ public final class ColoredVertex extends Vertex {
      */
     public void color(@Nonnull Color color) {
         this.color = color;
+    }
+
+    @Nonnull
+    @Override
+    public ColoredVertex transform(@Nonnull Vector origin, @Nonnull Quaternion rotation) {
+        return new ColoredVertex(super.transform(origin, rotation), color);
+    }
+
+    @Nonnull
+    @Override
+    public ColoredVertex inflate(double scale) {
+        return new ColoredVertex(super.inflate(scale), color);
     }
 }

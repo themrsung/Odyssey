@@ -90,6 +90,7 @@ public final class WorldManager {
 
     private final List<World> worlds = new ArrayList<>();
     private final Map<World, DateTime> tickTimes = new HashMap<>();
+    @SuppressWarnings("BusyWait")
     private final Thread thread = new Thread(() -> {
         while (true) {
             List.copyOf(worlds).forEach(w -> {
@@ -101,6 +102,12 @@ public final class WorldManager {
                 w.tick(delta);
                 tickTimes.put(w, now);
             });
+
+            try {
+                Thread.sleep(1);
+            } catch (InterruptedException e) {
+                return;
+            }
         }
     });
 }

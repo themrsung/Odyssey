@@ -110,12 +110,12 @@ public class Sphere implements Solid {
     @Nonnull
     @Override
     public List<Vertex> vertices() {
-        final Vector a = centroid.add(new Vector(radius, 0, 0));
-        final Vector b = centroid.add(new Vector(-radius, 0, 0));
-        final Vector c = centroid.add(new Vector(0, radius, 0));
-        final Vector d = centroid.add(new Vector(0, -radius, 0));
-        final Vector e = centroid.add(new Vector(0, 0, radius));
-        final Vector f = centroid.add(new Vector(0, 0, -radius));
+        final Vector a = centroid.add(new Vector(radius, 0, 0).rotate(rotation));
+        final Vector b = centroid.add(new Vector(-radius, 0, 0).rotate(rotation));
+        final Vector c = centroid.add(new Vector(0, radius, 0).rotate(rotation));
+        final Vector d = centroid.add(new Vector(0, -radius, 0).rotate(rotation));
+        final Vector e = centroid.add(new Vector(0, 0, radius).rotate(rotation));
+        final Vector f = centroid.add(new Vector(0, 0, -radius).rotate(rotation));
 
         return List.of(
                 new ColoredVertex(a, f, d, Color.RED),

@@ -1,17 +1,20 @@
 package civitas.celestis.geometry;
 
+import civitas.celestis.number.Quaternion;
 import civitas.celestis.number.Vector;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.concurrent.Immutable;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * <h2>Vertex</h2>
  * <p>Represents a renderable 3D triangle.</p>
  */
 @Immutable
-public class Vertex {
+public class Vertex implements Iterable<Vector> {
     /**
      * Creates a new vertex.
      *
@@ -110,5 +113,43 @@ public class Vertex {
         if (length < 0) return null;
 
         return ray.destination(length);
+    }
+
+    /**
+     * Transforms this vertex to relative space.
+     * @param origin Relative origin
+     * @param rotation Relative rotation
+     * @return Relative vertex
+     */
+    @Nonnull
+    public Vertex transform(@Nonnull Vector origin, @Nonnull Quaternion rotation) {
+        return new Vertex(
+                a.subtract(origin).rotate(rotation),
+                b.subtract(origin).rotate(rotation),
+                c.subtract(origin).rotate(rotation)
+        );
+    }
+
+    /**
+     * Inflates this vertex by given scale.
+     * @param scale Scale to use
+     * @return Inflated vertex
+     */
+    @Nonnull
+    public Vertex inflate(double scale) {
+        return new Vertex(
+                a.multiply(scale),
+                b.multiply(scale),
+                c.multiply(scale)
+        );
+    }
+
+    /**
+     * Gets the iterator of the three points of this vertex.
+     * @return Iterator of points
+     */
+    @Override
+    public Iterator<Vector> iterator() {
+        return List.of(a, b, c).iterator();
     }
 }
