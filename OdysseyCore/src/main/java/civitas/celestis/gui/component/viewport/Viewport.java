@@ -5,7 +5,6 @@ import civitas.celestis.geometry.ray.Ray;
 import civitas.celestis.graphics.PolygonX;
 import civitas.celestis.graphics.Scene;
 import civitas.celestis.number.Quaternion;
-import civitas.celestis.number.Vector2;
 import civitas.celestis.number.Vector3;
 import civitas.celestis.number.Vectors;
 import civitas.celestis.object.BaseObject;

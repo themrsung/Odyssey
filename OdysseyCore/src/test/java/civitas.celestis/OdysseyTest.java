@@ -56,7 +56,6 @@ public final class OdysseyTest {
         viewport.setInflation(100);
 
 
-
         // Let's have some fun
         Odyssey.getScheduler().registerTask(delta -> o1.rotateRate(new Quaternion(
                 Math.random() * 132,
@@ -64,17 +63,6 @@ public final class OdysseyTest {
                 Math.random() * 282,
                 Math.random() * 131
         ).normalize().scale(100)));
-
-
-
-
-
-
-
-
-
-
-
 
 
         Odyssey.getScheduler().registerTask(delta -> viewport.renderAndRepaint());
