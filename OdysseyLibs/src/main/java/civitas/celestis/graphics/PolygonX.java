@@ -5,7 +5,6 @@ import civitas.celestis.number.Vector2;
 import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
 import java.awt.*;
-import java.util.List;
 
 /**
  * <h2>PolygonX</h2>

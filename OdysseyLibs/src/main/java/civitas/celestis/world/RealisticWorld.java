@@ -87,12 +87,17 @@ public class RealisticWorld extends AbstractWorld implements TangibleWorld {
 
     @Override
     public void tick(@Nonnull Duration delta) {
-        // Convert delta to seconds
-        final double seconds = delta.getMillis() / 1000d;
+        // Handle collisions
+        handleCollisions();
 
-        // Scale gravity
-        final Vector3 g = gravity.multiply(seconds);
+        // Loop through objects
+        tickObjects(delta);
+    }
 
+    /**
+     * Loops through all possible object pairs and handles collisions.
+     */
+    protected void handleCollisions() {
         // Get all possible pairs
         final List<Pair<TangibleObject>> pairs = Pair.of(getObjects(TangibleObject.class).toList());
 
@@ -131,7 +136,19 @@ public class RealisticWorld extends AbstractWorld implements TangibleWorld {
                 overlaps.remove(p);
             }
         });
+    }
 
+    /**
+     * Loops through all objects and handles physics.
+     *
+     * @param delta Duration between the last tick and now
+     */
+    protected void tickObjects(@Nonnull Duration delta) {
+        // Convert delta to seconds
+        final double seconds = delta.getMillis() / 1000d;
+
+        // Scale gravity
+        final Vector3 g = gravity.multiply(seconds);
 
         // Loop through objects
         getObjects().forEach(o -> {
