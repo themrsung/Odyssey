@@ -36,22 +36,4 @@ public record ViewportConfiguration(
     public List<BaseObject> hiddenObjects() {
         return List.copyOf(hiddenObjects);
     }
-
-    /**
-     * Hides an object.
-     *
-     * @param object Object to hide
-     */
-    public void hideObject(@Nonnull BaseObject object) {
-        hiddenObjects.add(object);
-    }
-
-    /**
-     * Shows an object.
-     *
-     * @param object Object to un-hide
-     */
-    public void showObject(@Nonnull BaseObject object) {
-        hiddenObjects.remove(object);
-    }
 }
