@@ -14,9 +14,10 @@ import java.util.List;
 /**
  * <h2>Sphere</h2>
  * <p>A solid with no corners.</p>
+ *
  * @param centroid Geometric centroid of this sphere
  * @param rotation Rotation of this sphere
- * @param radius Radius of this sphere
+ * @param radius   Radius of this sphere
  */
 public record Sphere(
         @Nonnull Vector3 centroid,

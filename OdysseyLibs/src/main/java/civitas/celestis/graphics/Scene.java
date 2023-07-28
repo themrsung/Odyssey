@@ -10,6 +10,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -143,6 +144,9 @@ public class Scene {
 
         final List<Vertex> vertices = getVertices();
         if (origin != null) vertices.remove(origin); // Exclude origin
+
+        // Sort by distance to minimize unnecessary iterations
+        vertices.sort(Comparator.comparing(v -> v.centroid().distance2(ray.origin())));
 
         for (Vertex v : vertices) {
             final Ray reflection = ray.reflection(v);
