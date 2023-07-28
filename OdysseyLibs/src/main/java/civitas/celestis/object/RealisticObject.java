@@ -57,7 +57,7 @@ public class RealisticObject extends AbstractObject implements TangibleObject {
     /**
      * Creates a new object.
      *
-     * @param uniqueId     Unique identifier of this obejct
+     * @param uniqueId     Unique identifier of this object
      * @param location     Location of this object
      * @param acceleration Acceleration of this object
      * @param rotation     Rotation of this object
