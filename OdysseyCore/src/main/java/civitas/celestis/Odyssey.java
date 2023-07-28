@@ -15,7 +15,6 @@ public final class Odyssey {
      * Starts the engine.
      */
     public static void start() {
-
         // Start modules
         scheduler.start();
         eventManager.start();
