@@ -26,7 +26,7 @@ public interface Vertex extends Iterable<Vector3> {
     /**
      * Gets point B of this vertex.
      *
-     * @return Point V
+     * @return Point B
      */
     @Nonnull
     Vector3 b();
