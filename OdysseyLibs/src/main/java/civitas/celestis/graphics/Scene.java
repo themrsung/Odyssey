@@ -1,9 +1,9 @@
 package civitas.celestis.graphics;
 
-import civitas.celestis.geometry.Ray;
-import civitas.celestis.geometry.Vertex;
+import civitas.celestis.geometry.ray.Ray;
+import civitas.celestis.geometry.vertex.Vertex;
 import civitas.celestis.number.Quaternion;
-import civitas.celestis.number.Vector;
+import civitas.celestis.number.Vector3;
 
 import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
@@ -70,7 +70,7 @@ public class Scene {
      * @return Transformed stream of vertices
      */
     @Nonnull
-    public Stream<Vertex> getVertices(@Nonnull Vector origin, @Nonnull Quaternion rotation, double inflation) {
+    public Stream<Vertex> getVertices(@Nonnull Vector3 origin, @Nonnull Quaternion rotation, double inflation) {
         return List.copyOf(vertices).stream().map(v -> v.transform(origin, rotation).inflate(inflation));
     }
 

@@ -2,7 +2,7 @@ package civitas.celestis.util;
 
 import civitas.celestis.number.Numbers;
 import civitas.celestis.number.Quaternion;
-import civitas.celestis.number.Vector;
+import civitas.celestis.number.Vector3;
 
 import javax.annotation.Nonnull;
 
@@ -19,7 +19,7 @@ public final class RotationBuilder {
      * @return Builder instance
      */
     @Nonnull
-    public static RotationBuilder fromAxisAngle(@Nonnull Vector axis, double angle) {
+    public static RotationBuilder fromAxisAngle(@Nonnull Vector3 axis, double angle) {
         return new RotationBuilder(axis, angle);
     }
 
@@ -39,7 +39,7 @@ public final class RotationBuilder {
      * @param axis  Axis of rotation
      * @param angle Angle of rotation in radians
      */
-    public RotationBuilder(@Nonnull Vector axis, double angle) {
+    public RotationBuilder(@Nonnull Vector3 axis, double angle) {
         if (Numbers.requireFinite(angle) == 0) {
             this.rotation = Quaternion.IDENTITY;
         } else {
@@ -77,7 +77,7 @@ public final class RotationBuilder {
      * @return {@code this}
      */
     @Nonnull
-    public RotationBuilder rotate(@Nonnull Vector axis, double angle) {
+    public RotationBuilder rotate(@Nonnull Vector3 axis, double angle) {
         if (Numbers.requireFinite(angle) == 0) {
             return rotate(Quaternion.IDENTITY);
         } else {
@@ -93,7 +93,7 @@ public final class RotationBuilder {
      */
     @Nonnull
     public RotationBuilder addYaw(double radians) {
-        return rotate(Vector.POSITIVE_Y, Numbers.requireFinite(radians));
+        return rotate(Vector3.POSITIVE_Y, Numbers.requireFinite(radians));
     }
 
     /**
@@ -115,7 +115,7 @@ public final class RotationBuilder {
      */
     @Nonnull
     public RotationBuilder addPitch(double radians) {
-        return rotate(Vector.POSITIVE_X, Numbers.requireFinite(radians));
+        return rotate(Vector3.POSITIVE_X, Numbers.requireFinite(radians));
     }
 
     /**
@@ -137,7 +137,7 @@ public final class RotationBuilder {
      */
     @Nonnull
     public RotationBuilder addRoll(double radians) {
-        return rotate(Vector.POSITIVE_Z, Numbers.requireFinite(radians));
+        return rotate(Vector3.POSITIVE_Z, Numbers.requireFinite(radians));
     }
 
     /**

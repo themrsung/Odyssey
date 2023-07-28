@@ -20,7 +20,7 @@ public final class Vectors {
      * @return Translated 2D vector
      */
     @Nonnull
-    public static Vector2 translate(@Nonnull Vector v3, @Nonnegative double focalLength) {
+    public static Vector2 translate(@Nonnull Vector3 v3, @Nonnegative double focalLength) {
         final double z = ((focalLength / (focalLength + v3.z())));
         return new Vector2(
                 z * v3.x(),
@@ -36,7 +36,7 @@ public final class Vectors {
      * @return Reflection vector
      */
     @Nonnull
-    public static Vector reflection(@Nonnull Vector in, @Nonnull Vector normal) {
+    public static Vector3 reflection(@Nonnull Vector3 in, @Nonnull Vector3 normal) {
         return in.subtract(normal.multiply(2 * in.dot(normal)));
     }
 }

@@ -47,7 +47,7 @@ public class Quaternion implements Serializable {
      * @param s Scalar part of this quaternion
      * @param v Vector part of this quaternion
      */
-    public Quaternion(double s, @Nonnull Vector v) {
+    public Quaternion(double s, @Nonnull Vector3 v) {
         this(s, v.x(), v.y(), v.z());
     }
 
@@ -105,8 +105,8 @@ public class Quaternion implements Serializable {
      * @return Vector part of quaternion
      */
     @Nonnull
-    public Vector vector() {
-        return new Vector(x, y, z);
+    public Vector3 vector() {
+        return new Vector3(x, y, z);
     }
 
     /**

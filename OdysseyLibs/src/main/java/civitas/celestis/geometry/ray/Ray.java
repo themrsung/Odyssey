@@ -1,6 +1,7 @@
-package civitas.celestis.geometry;
+package civitas.celestis.geometry.ray;
 
-import civitas.celestis.number.Vector;
+import civitas.celestis.geometry.vertex.Vertex;
+import civitas.celestis.number.Vector3;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -16,7 +17,7 @@ public interface Ray {
      * @return Origin
      */
     @Nonnull
-    Vector origin();
+    Vector3 origin();
 
     /**
      * Gets the direction of this ray.
@@ -24,7 +25,7 @@ public interface Ray {
      * @return Direction
      */
     @Nonnull
-    Vector direction();
+    Vector3 direction();
 
     /**
      * Gets the destination of this ray.
@@ -33,7 +34,7 @@ public interface Ray {
      * @return Destination
      */
     @Nonnull
-    Vector destination(double length);
+    Vector3 destination(double length);
 
     /**
      * Gets the reflection ray when collided with given surface.

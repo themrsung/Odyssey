@@ -1,7 +1,8 @@
-package civitas.celestis.geometry;
+package civitas.celestis.geometry.vertex;
 
+import civitas.celestis.geometry.ray.Ray;
 import civitas.celestis.number.Quaternion;
-import civitas.celestis.number.Vector;
+import civitas.celestis.number.Vector3;
 
 import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
@@ -13,14 +14,14 @@ import java.util.List;
  * <h2>Vertex</h2>
  * <p>A vertex represents a renderable 3D triangle.</p>
  */
-public interface Vertex extends Iterable<Vector> {
+public interface Vertex extends Iterable<Vector3> {
     /**
      * Gets point A of this vertex.
      *
      * @return Point A
      */
     @Nonnull
-    Vector a();
+    Vector3 a();
 
     /**
      * Gets point B of this vertex.
@@ -28,7 +29,7 @@ public interface Vertex extends Iterable<Vector> {
      * @return Point V
      */
     @Nonnull
-    Vector b();
+    Vector3 b();
 
     /**
      * Gets point C of this vertex.
@@ -36,7 +37,7 @@ public interface Vertex extends Iterable<Vector> {
      * @return Point C
      */
     @Nonnull
-    Vector c();
+    Vector3 c();
 
     /**
      * Gets the current color of this vertex.
@@ -64,7 +65,7 @@ public interface Vertex extends Iterable<Vector> {
      * @return List of points
      */
     @Nonnull
-    List<Vector> points();
+    List<Vector3> points();
 
     /**
      * Gets the geometric centroid of this vertex.
@@ -72,7 +73,7 @@ public interface Vertex extends Iterable<Vector> {
      * @return Geometric centroid
      */
     @Nonnull
-    Vector centroid();
+    Vector3 centroid();
 
     /**
      * Gets the surface normal of this vertex.
@@ -80,7 +81,7 @@ public interface Vertex extends Iterable<Vector> {
      * @return Surface normal
      */
     @Nonnull
-    Vector normal();
+    Vector3 normal();
 
     /**
      * Gets the intersection between {@code this} and given ray.
@@ -89,7 +90,7 @@ public interface Vertex extends Iterable<Vector> {
      * @return Intersection if found, {@code null} if not
      */
     @Nullable
-    Vector intersection(@Nonnull Ray ray);
+    Vector3 intersection(@Nonnull Ray ray);
 
     /**
      * Inflates this vertex by given scale.
@@ -108,7 +109,7 @@ public interface Vertex extends Iterable<Vector> {
      * @return Transformed vertex
      */
     @Nonnull
-    Vertex transform(@Nonnull Vector origin, @Nonnull Quaternion rotation);
+    Vertex transform(@Nonnull Vector3 origin, @Nonnull Quaternion rotation);
 
     /**
      * Called when this vertex is hit by a ray.

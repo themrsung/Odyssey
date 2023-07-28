@@ -1,8 +1,11 @@
-package civitas.celestis.geometry;
+package civitas.celestis.geometry.vertex;
 
+import civitas.celestis.geometry.solid.Solids;
+import civitas.celestis.geometry.ray.LightRay;
+import civitas.celestis.geometry.ray.Ray;
 import civitas.celestis.graphics.Colors;
 import civitas.celestis.number.Quaternion;
-import civitas.celestis.number.Vector;
+import civitas.celestis.number.Vector3;
 
 import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
@@ -25,7 +28,7 @@ public class ColoredVertex implements Vertex {
      * @param c     Point C of this vertex
      * @param color Color of this vertex
      */
-    public ColoredVertex(@Nonnull Vector a, @Nonnull Vector b, @Nonnull Vector c, @Nonnull Color color) {
+    public ColoredVertex(@Nonnull Vector3 a, @Nonnull Vector3 b, @Nonnull Vector3 c, @Nonnull Color color) {
         this.a = a;
         this.b = b;
         this.c = c;
@@ -49,9 +52,9 @@ public class ColoredVertex implements Vertex {
      * @param reflectiveness Reflection coefficient of this vertex
      */
     public ColoredVertex(
-            @Nonnull Vector a,
-            @Nonnull Vector b,
-            @Nonnull Vector c,
+            @Nonnull Vector3 a,
+            @Nonnull Vector3 b,
+            @Nonnull Vector3 c,
             @Nonnull Color color,
             @Nonnegative double reflectiveness
     ) {
@@ -63,11 +66,11 @@ public class ColoredVertex implements Vertex {
     }
 
     @Nonnull
-    private final Vector a;
+    private final Vector3 a;
     @Nonnull
-    private final Vector b;
+    private final Vector3 b;
     @Nonnull
-    private final Vector c;
+    private final Vector3 c;
     @Nonnull
     private Color color;
     @Nonnegative
@@ -75,19 +78,19 @@ public class ColoredVertex implements Vertex {
 
     @Nonnull
     @Override
-    public Vector a() {
+    public Vector3 a() {
         return a;
     }
 
     @Nonnull
     @Override
-    public Vector b() {
+    public Vector3 b() {
         return b;
     }
 
     @Nonnull
     @Override
-    public Vector c() {
+    public Vector3 c() {
         return c;
     }
 
@@ -113,28 +116,28 @@ public class ColoredVertex implements Vertex {
 
     @Nonnull
     @Override
-    public List<Vector> points() {
+    public List<Vector3> points() {
         return List.of(a, b, c);
     }
 
     @Nonnull
     @Override
-    public Vector centroid() {
+    public Vector3 centroid() {
         return a.add(b).add(c).divide(3);
     }
 
     @Nonnull
     @Override
-    public Vector normal() {
+    public Vector3 normal() {
         return b.subtract(a).cross(c.subtract(a));
     }
 
     @Nullable
     @Override
-    public Vector intersection(@Nonnull Ray ray) {
+    public Vector3 intersection(@Nonnull Ray ray) {
         if (!Solids.intersects(this, ray)) return null;
 
-        final Vector n = normal();
+        final Vector3 n = normal();
 
         final double denominator = ray.direction().dot(n);
         if (denominator == 0) return null;
@@ -159,7 +162,7 @@ public class ColoredVertex implements Vertex {
 
     @Nonnull
     @Override
-    public ColoredVertex transform(@Nonnull Vector origin, @Nonnull Quaternion rotation) {
+    public ColoredVertex transform(@Nonnull Vector3 origin, @Nonnull Quaternion rotation) {
         return new ColoredVertex(
                 a.subtract(origin).rotate(rotation),
                 b.subtract(origin).rotate(rotation),
@@ -178,7 +181,7 @@ public class ColoredVertex implements Vertex {
 
     @Override
     @Nonnull
-    public Iterator<Vector> iterator() {
+    public Iterator<Vector3> iterator() {
         return points().iterator();
     }
 

@@ -1,6 +1,8 @@
-package civitas.celestis.geometry;
+package civitas.celestis.geometry.solid;
 
-import civitas.celestis.number.Vector;
+import civitas.celestis.geometry.ray.Ray;
+import civitas.celestis.geometry.vertex.Vertex;
+import civitas.celestis.number.Vector3;
 
 import javax.annotation.Nonnull;
 
@@ -18,7 +20,7 @@ public final class Solids {
      * @param d Point D
      * @return Signed volume of tetrahedron
      */
-    public static double signedVolume(@Nonnull Vector a, @Nonnull Vector b, @Nonnull Vector c, @Nonnull Vector d) {
+    public static double signedVolume(@Nonnull Vector3 a, @Nonnull Vector3 b, @Nonnull Vector3 c, @Nonnull Vector3 d) {
         return (1.0 / 6.0) * b.subtract(a).cross(c.subtract(a)).dot(d.subtract(a));
     }
 
@@ -30,12 +32,12 @@ public final class Solids {
      * @return {@code true} if the two objects intersect
      */
     public static boolean intersects(@Nonnull Vertex vertex, @Nonnull Ray ray) {
-        final Vector p1 = vertex.a();
-        final Vector p2 = vertex.b();
-        final Vector p3 = vertex.c();
+        final Vector3 p1 = vertex.a();
+        final Vector3 p2 = vertex.b();
+        final Vector3 p3 = vertex.c();
 
-        final Vector q1 = ray.origin();
-        final Vector q2 = ray.destination(ray.origin().distance2(vertex.centroid()));
+        final Vector3 q1 = ray.origin();
+        final Vector3 q2 = ray.destination(ray.origin().distance2(vertex.centroid()));
 
         // Different sign
         final double a = signedVolume(q1, p1, p2, p3);

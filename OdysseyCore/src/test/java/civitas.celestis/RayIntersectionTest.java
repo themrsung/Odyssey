@@ -1,25 +1,25 @@
 package civitas.celestis;
 
-import civitas.celestis.geometry.ColoredVertex;
-import civitas.celestis.geometry.LightRay;
-import civitas.celestis.geometry.Ray;
-import civitas.celestis.geometry.Vertex;
-import civitas.celestis.number.Vector;
+import civitas.celestis.geometry.vertex.ColoredVertex;
+import civitas.celestis.geometry.ray.LightRay;
+import civitas.celestis.geometry.ray.Ray;
+import civitas.celestis.geometry.vertex.Vertex;
+import civitas.celestis.number.Vector3;
 
 import java.awt.*;
 
 public class RayIntersectionTest {
     public static void main(String[] args) {
         final Vertex vertex = new ColoredVertex(
-                new Vector(0, 0, 0),
-                new Vector(100, 0, 0),
-                new Vector(0, 0, 100),
+                new Vector3(0, 0, 0),
+                new Vector3(100, 0, 0),
+                new Vector3(0, 0, 100),
                 Color.CYAN
         );
 
         final Ray ray = new LightRay(
-                new Vector(50, 1000, 50),
-                Vector.NEGATIVE_Y,
+                new Vector3(50, 1000, 50),
+                Vector3.NEGATIVE_Y,
                 100
         );
 
