@@ -28,7 +28,12 @@ public class ImmovableObject extends RealisticObject {
      * @param geometry Geometric profile of this object
      * @param mass     Mass of this object
      */
-    public ImmovableObject(@Nonnull UUID uniqueId, @Nonnull Vector3 location, @Nonnull Geometry geometry, @Nonnegative double mass) {
+    public ImmovableObject(
+            @Nonnull UUID uniqueId,
+            @Nonnull Vector3 location,
+            @Nonnull Geometry geometry,
+            @Nonnegative double mass
+    ) {
         super(uniqueId, location, geometry, mass);
     }
 
@@ -41,7 +46,13 @@ public class ImmovableObject extends RealisticObject {
      * @param geometry Geometric profile of this object
      * @param mass     Mass of this object
      */
-    public ImmovableObject(@Nonnull UUID uniqueId, @Nonnull Vector3 location, @Nonnull Quaternion rotation, @Nonnull Geometry geometry, @Nonnegative double mass) {
+    public ImmovableObject(
+            @Nonnull UUID uniqueId,
+            @Nonnull Vector3 location,
+            @Nonnull Quaternion rotation,
+            @Nonnull Geometry geometry,
+            @Nonnegative double mass
+    ) {
         super(uniqueId, location, rotation, geometry, mass);
     }
 
@@ -56,7 +67,15 @@ public class ImmovableObject extends RealisticObject {
      * @param geometry     Geometric profile of this object
      * @param mass         Mass of this object
      */
-    public ImmovableObject(@Nonnull UUID uniqueId, @Nonnull Vector3 location, @Nonnull Vector3 acceleration, @Nonnull Quaternion rotation, @Nonnull Quaternion rotationRate, @Nonnull Geometry geometry, @Nonnegative double mass) {
+    public ImmovableObject(
+            @Nonnull UUID uniqueId,
+            @Nonnull Vector3 location,
+            @Nonnull Vector3 acceleration,
+            @Nonnull Quaternion rotation,
+            @Nonnull Quaternion rotationRate,
+            @Nonnull Geometry geometry,
+            @Nonnegative double mass
+    ) {
         super(uniqueId, location, acceleration, rotation, rotationRate, geometry, mass);
     }
 
