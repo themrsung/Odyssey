@@ -59,7 +59,7 @@ public class Scene {
      */
     @Nonnull
     public List<Vertex> getVertices() {
-        return List.copyOf(vertices);
+        return new ArrayList<>(vertices);
     }
 
     /**

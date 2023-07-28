@@ -1,5 +1,22 @@
 package civitas.celestis;
 
+import civitas.celestis.geometry.profile.SphericalGeometry;
+import civitas.celestis.gui.component.viewport.Viewport;
+import civitas.celestis.number.Vector3;
+import civitas.celestis.object.BaseObject;
+import civitas.celestis.object.RealisticObject;
+import civitas.celestis.task.Task;
+import civitas.celestis.util.RotationBuilder;
+import civitas.celestis.world.RealisticWorld;
+import civitas.celestis.world.World;
+import org.joda.time.Duration;
+
+import javax.annotation.Nonnull;
+import javax.swing.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.UUID;
+
 /**
  * Test class for OdysseyCore.
  */
@@ -7,74 +24,71 @@ public final class OdysseyTest {
     public static void main(String[] args) {
         Odyssey.start();
 
-//        final World world = new DebugWorld(UUID.randomUUID(), "World", new ArrayList<>(), new ArrayList<>(), new Vector(0, -9.807, 0), 1.293);
-//        final BaseObject object = new DebugObject(
-//                UUID.randomUUID(),
-//                new Vector(50, 555, 0),
-//                Quaternion.IDENTITY,
-//                100000000,
-//                new SphericalGeometry(10),
-//                RotationBuilder.fromAxisAngle(Vector.NEGATIVE_Z, Math.toRadians(181)).build()
-//        );
-//
-//        final BaseObject o2 = new DebugObject(
-//                UUID.randomUUID(),
-//                new Vector(-500, 555, 0),
-//                Quaternion.IDENTITY,
-//                10000000000d,
-//                new SphericalGeometry(2.5),
-//                new Vector(1000, 0, 0),
-//                RotationBuilder.fromAxisAngle(Vector.POSITIVE_Y, Math.toRadians(23)).build()
-//        );
-//
-//        final BaseObject o3 = new DebugObject(
-//                UUID.randomUUID(),
-//                new Vector(0, 555, 100),
-//                Quaternion.IDENTITY,
-//                100,
-//                new SphericalGeometry(49),
-//                new Vector(0, 1000, 0),
-//                RotationBuilder.fromAxisAngle(new Vector(2, -3, 29), Math.toRadians(500)).build()
-//        );
-//
-//        world.addObject(object);
-//        world.addObject(o2);
-//        world.addObject(o3);
-//
-//        Odyssey.getWorldManager().addWorld(world);
-//
-//        Odyssey.getScheduler().registerTask(new Task() {
-//            @Override
-//            public void execute(@Nonnull Duration delta) {
-//                System.out.println(o3.getRotation());
-//            }
-//
-//            @Nonnull
-//            @Override
-//            public Duration getInterval() {
-//                return new Duration(1000);
-//            }
-//        });
-//
-//        final JFrame frame = new JFrame("Test");
-//        final Viewport viewport = new Viewport();
-//
-//        viewport.setWorld(world);
-//        viewport.setOrigin(new Vector(0, 555, -100));
-//        viewport.setRotation(Quaternion.IDENTITY);
-//
-//        frame.add(viewport);
-//
-//        frame.setSize(1920, 1080);
-//        frame.setVisible(true);
-//        frame.addWindowListener(new WindowAdapter() {
-//            @Override
-//            public void windowClosing(WindowEvent e) {
-//                frame.dispose();
-//                Odyssey.stop();
-//            }
-//        });
-//
-//        Odyssey.getScheduler().registerTask(delta -> viewport.render());
+        final World world = new RealisticWorld(
+                UUID.randomUUID(),
+                "Test World",
+                new Vector3(0, -9.807, 0),
+                1.225
+        );
+
+        Odyssey.getWorldManager().addWorld(world);
+
+        final BaseObject o1 = new RealisticObject(
+                UUID.randomUUID(),
+                new Vector3(0, 0, 100),
+                new SphericalGeometry(10),
+                1
+        );
+
+        o1.setRotationRate(RotationBuilder.fromAxisAngle(new Vector3(12, 22, 13), Math.toRadians(90)).build());
+
+        world.addObject(o1);
+
+        final JFrame frame = new JFrame("Test");
+        final Viewport viewport = new Viewport(world);
+
+        frame.setSize(1920, 1080);
+        frame.setVisible(true);
+
+        frame.add(viewport);
+
+        viewport.setInflation(100);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Odyssey.getScheduler().registerTask(delta -> viewport.renderAndRepaint());
+
+        Odyssey.getScheduler().registerTask(new Task() {
+            @Override
+            public void execute(@Nonnull Duration delta) {
+                System.out.println(o1.getLocation());
+            }
+
+            @Nonnull
+            @Override
+            public Duration getInterval() {
+                return Duration.standardSeconds(1);
+            }
+        });
+
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                frame.dispose();
+                Odyssey.stop();
+            }
+        });
     }
 }
