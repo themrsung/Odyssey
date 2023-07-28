@@ -15,7 +15,7 @@ import java.util.Map;
  * <h2>SchedulerCore</h2>
  * <p>An internal core of a scheduler.</p>
  */
-public final class SchedulerCore {
+final class SchedulerCore {
     @SuppressWarnings("BusyWait")
     public SchedulerCore(@Nonnegative long accuracy) {
         this.tasks = new ArrayList<>();
