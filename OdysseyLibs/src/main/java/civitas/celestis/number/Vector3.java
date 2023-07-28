@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.Arrays;
 
 /**
- * <h2>Vector</h2>
+ * <h2>Vector3</h2>
  * <p>
  * A three-dimensional vector.
  * Non-finite values are not supported.
@@ -328,7 +328,7 @@ public class Vector3 implements Serializable {
      */
     @Nonnull
     public static Vector3 parseVector(@Nonnull String s) throws NumberFormatException {
-        if (!s.startsWith("Vector{")) throw new NumberFormatException("Given string is not a vector.");
+        if (!s.startsWith("Vector3{")) throw new NumberFormatException("Given string is not a vector.");
 
         final String[] strings = s
                 .replaceAll("Vector\\{", "")
@@ -359,7 +359,7 @@ public class Vector3 implements Serializable {
     @Override
     @Nonnull
     public String toString() {
-        return "Vector{" +
+        return "Vector3{" +
                 "x=" + x +
                 ", y=" + y +
                 ", z=" + z +
