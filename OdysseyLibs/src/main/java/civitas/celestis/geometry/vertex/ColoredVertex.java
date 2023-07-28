@@ -1,8 +1,8 @@
 package civitas.celestis.geometry.vertex;
 
-import civitas.celestis.geometry.solid.Solids;
 import civitas.celestis.geometry.ray.LightRay;
 import civitas.celestis.geometry.ray.Ray;
+import civitas.celestis.geometry.solid.Solids;
 import civitas.celestis.graphics.Colors;
 import civitas.celestis.number.Quaternion;
 import civitas.celestis.number.Vector3;

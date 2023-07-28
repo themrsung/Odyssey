@@ -1,8 +1,8 @@
 package civitas.celestis;
 
-import civitas.celestis.geometry.vertex.ColoredVertex;
 import civitas.celestis.geometry.ray.LightRay;
 import civitas.celestis.geometry.ray.Ray;
+import civitas.celestis.geometry.vertex.ColoredVertex;
 import civitas.celestis.geometry.vertex.Vertex;
 import civitas.celestis.number.Vector3;
 
