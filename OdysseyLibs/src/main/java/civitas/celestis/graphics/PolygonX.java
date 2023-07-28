@@ -40,13 +40,4 @@ public class PolygonX extends Polygon {
 
         super.addPoint(x, y);
     }
-
-    /**
-     * Adds multiple points to this polygon.
-     *
-     * @param points List of points to add
-     */
-    public void addPoints(@Nonnull List<Vector2> points) {
-        points.forEach(this::addPoint);
-    }
 }
