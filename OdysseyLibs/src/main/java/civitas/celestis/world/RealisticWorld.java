@@ -83,7 +83,7 @@ public class RealisticWorld extends AbstractWorld implements TangibleWorld {
     @Nonnegative
     private double airDensity;
     @Nonnull
-    private final List<Pair<TangibleObject>> overlaps;
+    protected final List<Pair<TangibleObject>> overlaps;
 
     @Override
     public void tick(@Nonnull Duration delta) {
@@ -165,6 +165,16 @@ public class RealisticWorld extends AbstractWorld implements TangibleWorld {
             // Tick object
             o.tick(delta);
         });
+    }
+
+    /**
+     * Gets a list of overlapping object pairs in this world.
+     *
+     * @return List of overlaps
+     */
+    @Nonnull
+    public List<Pair<TangibleObject>> getOverlaps() {
+        return new ArrayList<>(overlaps);
     }
 
     @Override
