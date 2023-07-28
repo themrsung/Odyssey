@@ -35,8 +35,10 @@ public class Viewport extends JPanel {
 
         this.scene = new Scene();
         this.hiddenObjects = new ArrayList<>();
-
-        initialize();
+        this.origin = Vector3.ZERO;
+        this.rotation = Quaternion.IDENTITY;
+        this.focalLength = 500;
+        this.inflation = 10;
     }
 
     /**
@@ -50,17 +52,9 @@ public class Viewport extends JPanel {
 
         this.scene = new Scene();
         this.hiddenObjects = new ArrayList<>();
-
-        initialize();
-    }
-
-    /**
-     * Initializes default settings.
-     */
-    private void initialize() {
-        this.focalLength = 500;
         this.origin = Vector3.ZERO;
         this.rotation = Quaternion.IDENTITY;
+        this.focalLength = 500;
         this.inflation = 10;
     }
 
