@@ -2,6 +2,7 @@ package civitas.celestis;
 
 import civitas.celestis.event.lifecycle.EventManager;
 import civitas.celestis.task.lifecycle.Scheduler;
+import civitas.celestis.world.lifecycle.WorldManager;
 
 import javax.annotation.Nonnull;
 
@@ -18,6 +19,7 @@ public final class Odyssey {
         // Start modules
         scheduler.start();
         eventManager.start();
+        worldManager.start();
     }
 
     /**
@@ -25,6 +27,7 @@ public final class Odyssey {
      */
     public static void stop() {
         // Stop modules
+        worldManager.stop();
         eventManager.stop();
         scheduler.stop();
     }
@@ -49,6 +52,17 @@ public final class Odyssey {
         return eventManager;
     }
 
+    /**
+     * Gets the world manager instance.
+     *
+     * @return {@link WorldManager}
+     */
+    @Nonnull
+    public static WorldManager getWorldManager() {
+        return worldManager;
+    }
+
     private static final Scheduler scheduler = new Scheduler();
     private static final EventManager eventManager = new EventManager();
+    private static final WorldManager worldManager = new WorldManager();
 }
