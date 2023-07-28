@@ -2,6 +2,7 @@ package civitas.celestis;
 
 import civitas.celestis.geometry.profile.SphericalGeometry;
 import civitas.celestis.gui.component.viewport.Viewport;
+import civitas.celestis.number.Quaternion;
 import civitas.celestis.number.Vector3;
 import civitas.celestis.object.BaseObject;
 import civitas.celestis.object.RealisticObject;
@@ -55,6 +56,14 @@ public final class OdysseyTest {
         viewport.setInflation(100);
 
 
+
+        // Let's have some fun
+        Odyssey.getScheduler().registerTask(delta -> o1.rotateRate(new Quaternion(
+                Math.random() * 132,
+                Math.random() * 932039,
+                Math.random() * 282,
+                Math.random() * 131
+        ).normalize().scale(100)));
 
 
 
