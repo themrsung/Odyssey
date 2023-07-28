@@ -27,4 +27,16 @@ public final class Vectors {
                 z * -v3.y()
         );
     }
+
+    /**
+     * Given an input vector and a surface normal, this returns the reflection vector.
+     *
+     * @param in     Input vector
+     * @param normal Surface normal
+     * @return Reflection vector
+     */
+    @Nonnull
+    public static Vector reflection(@Nonnull Vector in, @Nonnull Vector normal) {
+        return in.subtract(normal.multiply(2 * in.dot(normal)));
+    }
 }

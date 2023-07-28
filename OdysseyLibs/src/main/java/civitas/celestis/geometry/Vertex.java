@@ -1,7 +1,9 @@
 package civitas.celestis.geometry;
 
+import civitas.celestis.number.Quaternion;
 import civitas.celestis.number.Vector;
 
+import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.awt.*;
@@ -45,6 +47,18 @@ public interface Vertex extends Iterable<Vector> {
     Color color();
 
     /**
+     * Gets the reflection coefficient of this vector.
+     * <p>
+     * Higher values will result in reflecting light rays to keep more of its intensity.
+     * Values over 1 will result in the reflecting light ray to become brighter.
+     * </p>
+     *
+     * @return Reflection coefficient
+     */
+    @Nonnegative
+    double reflectiveness();
+
+    /**
      * Gets a list containing all points of this vertex.
      *
      * @return List of points
@@ -78,12 +92,28 @@ public interface Vertex extends Iterable<Vector> {
     Vector intersection(@Nonnull Ray ray);
 
     /**
-     * Gets the reflection of given ray.
-     * If this vertex does not intersect with given ray, this will return {@code null}.
+     * Inflates this vertex by given scale.
      *
-     * @param in Input ray
-     * @return Reflection of ray if derivable, {@code null} if not
+     * @param scale Scale to inflate by
+     * @return Inflated vertex
      */
-    @Nullable
-    Ray reflection(@Nonnull Ray in);
+    @Nonnull
+    Vertex inflate(double scale);
+
+    /**
+     * Transforms this vertex to a relative coordinate system.
+     *
+     * @param origin   New origin
+     * @param rotation Rotation to apply to all vectors
+     * @return Transformed vertex
+     */
+    @Nonnull
+    Vertex transform(@Nonnull Vector origin, @Nonnull Quaternion rotation);
+
+    /**
+     * Called when this vertex is hit by a ray.
+     *
+     * @param ray Ray this vertex was hit by
+     */
+    void onRayHit(@Nonnull Ray ray);
 }

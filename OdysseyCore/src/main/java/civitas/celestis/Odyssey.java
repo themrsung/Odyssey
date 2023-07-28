@@ -1,7 +1,6 @@
 package civitas.celestis;
 
 import civitas.celestis.event.lifecycle.EventManager;
-import civitas.celestis.listener.object.ObjectsCollidedListener;
 import civitas.celestis.task.lifecycle.Scheduler;
 
 import javax.annotation.Nonnull;
@@ -15,10 +14,6 @@ public final class Odyssey {
      * Starts the engine.
      */
     public static void start() {
-        // Register event listeners
-        eventManager.registerListeners(
-                new ObjectsCollidedListener()
-        );
 
         // Start modules
         scheduler.start();
