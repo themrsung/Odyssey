@@ -2,6 +2,8 @@
 
 The game engine you'll miss.
 
+## Migrated to [OdysseyX](https://github.com/themrsung/OdysseyX)
+
 See the [wiki](https://github.com/themrsung/Odyssey/wiki) for documentation.
 
 > And then did Tyolus say to the people of the low plains,
